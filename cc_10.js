@@ -19,3 +19,24 @@ console.log(prod1.getDetails());
 prod1.updateStock(3);
 console.log(prod1.getDetails());
 // Prints everything to the console.
+
+// Task 2: Created Order Class
+class Order {
+    constructor(orderID, product, quantity) {
+        this.orderID = orderID;
+        this.product = product;
+        this.quantity = quantity;
+        this.totalPrice = product.price * quantity;
+        this.product.updateStock(quantity);
+    }
+    getOrderDetails() {
+        return `Order ID: ${this.orderID}, Product: ${this.product.name}, Quantity: ${this.quantity}, Total Price: $${this.totalPrice}`;
+    };
+};
+
+const order1 = new Order(501, prod1, 2);
+console.log(order1.getOrderDetails()); 
+// Expected output: "Order ID: 501, Product: Laptop, Quantity: 2, Total Price: $2400"
+
+console.log(prod1.getDetails()); 
+// Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5" (Stock reduced)
