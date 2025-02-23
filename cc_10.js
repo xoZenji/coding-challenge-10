@@ -32,7 +32,7 @@ class Order {
     getOrderDetails() {
         return `Order ID: ${this.orderID}, Product: ${this.product.name}, Quantity: ${this.quantity}, Total Price: $${this.totalPrice}`;
     };
-};
+}; // Created class order which stores order information and logs it to the console.
 
 const order1 = new Order(501, prod1, 2);
 console.log(order1.getOrderDetails()); 
