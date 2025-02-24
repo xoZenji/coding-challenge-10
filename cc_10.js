@@ -12,6 +12,9 @@ class Product {
     updateStock(quantity) {
         this.stock -= quantity;
     };
+    restock(quantity) {
+        this.stock += quantity; // Task 5 Edit
+    };
 }; // Created the product class, pulls the information and updates the item quantity.
 
 const prod1 = new Product("Laptop", 101, 1200, 10);
@@ -51,7 +54,7 @@ class Inventory {
     addProduct(product) {
         return this.products.push(product);
     }
-    
+
     listProducts() {
         this.products.forEach(product => console.log(product.getDetails()));
     }
@@ -66,9 +69,24 @@ class Inventory {
     listOrders() {
         this.orders.forEach(order => console.log(order.getOrderDetails()));
     }
-} // Created a new order, added it to the array then displays the info to the console.
+
+    // Task 5: Implemented Product Restocking
+    restockProduct(productId, quantity) {
+        const product = this.products.find(prod => prod.id === productId);
+        if (product) {
+            product.restock(quantity);
+            return `Replenished Item: ${product.getDetails()}`;
+        } else {
+            return `Unknown Product`;
+        }
+    }
+} // Searches for a product based on ID and restocks the item quantity.
 
 const inventory = new Inventory();
+inventory.addProduct(prod1);
+inventory.restockProduct(101, 5);
+console.log(prod1.getDetails()); 
+// Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 8"
 inventory.addProduct(prod1);
 inventory.listProducts();
 // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 5"
