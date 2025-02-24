@@ -53,7 +53,7 @@ class Inventory {
 
     addProduct(product) {
         return this.products.push(product);
-    }
+    } // Created an array of products in the Inventory Class, added a new product, and printed it to the console.
 
     listProducts() {
         this.products.forEach(product => console.log(product.getDetails()));
@@ -64,7 +64,7 @@ class Inventory {
             const newOrder = new Order(orderId, product, quantity);
             this.orders.push(newOrder);
         }
-    }
+    } // Created a new order, added it to the array, and printed it to the console with all information included.
 
     listOrders() {
         this.orders.forEach(order => console.log(order.getOrderDetails()));
